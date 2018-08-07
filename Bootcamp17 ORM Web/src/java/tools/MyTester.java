@@ -32,4 +32,5 @@ public class MyTester {
 //        System.out.println(jc.saveOrEdit("AD_PRES", 
 //                "President", "45000", 50000));
     }
+    
 }

@@ -37,4 +37,23 @@ public class LocationController {
         Location location = new Location(Short.parseShort(locationId), streetAddress, postalCode, city, stateProvince, null);
         return this.ldao.insertOrUpdate(location);
     }
+    
+
+    private List<Location> convertToListLocation(List<Object> dataAwal) {
+        List<Location> dataLocation = new ArrayList<>();
+        for (Object object : dataAwal) {
+            Location location = (Location) object;
+            dataLocation.add(location);
+        }
+        return dataLocation;
+    }
+    /**
+     * controller fungsi search location
+     * @param category sebagai parameter nama kolom 
+     * @param data sebagai nama datanya
+     * @return list
+     */
+    public List<Location> search(String category, String data) {
+        return this.convertToListLocation(this.ldao.search(category, data));
+    }
 }

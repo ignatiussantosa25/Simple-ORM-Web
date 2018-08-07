@@ -33,4 +33,20 @@ public class RegionController {
         Region region = new Region(new BigDecimal(regionId), regionName);
         return this.rdao.insertOrUpdate(region);
     }
+    
+    
+    private List<Region> convertToListRegion(List<Object> dataAwal) {
+        List<Region> dataRegion = new ArrayList<>();
+        for (Object object : dataAwal) {
+            Region region = (Region) object;
+            dataRegion.add(region);
+        }
+        return dataRegion;
+    }
+    
+    
+    public List<Region> search(String category, String data) {
+        return this.convertToListRegion(this.rdao.search(category, data));
+    }
+
 }

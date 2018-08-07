@@ -24,4 +24,9 @@ public class LocationDAO {
     public boolean insertOrUpdate(Location location) {
         return this.fdao.insertOrUpdate(location);
     }
+    public List<Object> search(String category, String data) {
+        return this.fdao.get("FROM Location WHERE " + category + " LIKE '%" + data + "%'");
+
+    }
+
 }

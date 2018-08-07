@@ -6,6 +6,7 @@
 package daos;
 
 import entities.Region;
+import java.util.List;
 import org.hibernate.SessionFactory;
 import tools.HibernateUtil;
 
@@ -23,4 +24,9 @@ public class RegionDAO {
     public boolean insertOrUpdate(Region region) {
         return this.fdao.insertOrUpdate(region);
     }
+     public  List<Object> search(String category, String data){
+     return this.fdao.get("FROM Region WHERE "+category+" LIKE '%"+data+"%'");
+    
+   }
+   
 }
