@@ -37,6 +37,15 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Location.findByStateProvince", query = "SELECT l FROM Location l WHERE l.stateProvince = :stateProvince")})
 public class Location implements Serializable {
 
+    public Location(Short locationId, String streetAddress, String postalCode, String city, String stateProvince, Country countryId) {
+        this.locationId = locationId;
+        this.streetAddress = streetAddress;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.stateProvince = stateProvince;
+        this.countryId = countryId;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

@@ -33,6 +33,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Region.findByRegionName", query = "SELECT r FROM Region r WHERE r.regionName = :regionName")})
 public class Region implements Serializable {
 
+    public Region(BigDecimal regionId, String regionName) {
+        this.regionId = regionId;
+        this.regionName = regionName;
+    }
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
