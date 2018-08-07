@@ -32,13 +32,12 @@ public class EmployeeDAO {
         return this.fdao.update(employee);
     }
     
-    /*
-    /**
-     * Fungsi untuk mendapatkan semua data (getall)
-     */  
-    
-    public List<Object> getAll(){
-        return this.fdao.get("FROM Employee");
+     /**
+     * function GEt All
+     * @return list object from employee
+     */
+    public List<Object> getAll() {
+        return this.fdao.get("from Employee");
     }
     
     

@@ -48,9 +48,7 @@ public class EmployeeController {
         return this.edao.insert(employee);
     }
     
-    public List<Employee> getAll(){
-        return this.convertToListEmployee(this.edao.getAll());
-    }
+   
     
     /* private List<Job> convertToListJob(List<Object> dataAwal){
         List<Job> dataJob = new ArrayList<>();
@@ -75,13 +73,26 @@ public class EmployeeController {
         return this.edao.getEmployeeById(employeeId);
     }*/
 
+    /**
+     * function convert object to list 
+     * @param dataAwal old data when before convert / all object
+     * @return list object employee
+     */
     private List<Employee> convertToListEmployee(List<Object> dataAwal) {
-        List<Employee> dataEmployee = new ArrayList<>();
-        for (Object object : dataAwal){
+        List<Employee> datas = new ArrayList<>();
+        for (Object object : dataAwal) {
             Employee employee = (Employee) object;
-            dataEmployee.add(employee);
+            datas.add(employee);
         }
-        return dataEmployee;
+        return datas;
+    }
+    
+    /**
+     * function get all data / select all
+     * @return list object data employee
+     */
+    public List<Employee> getAll() {
+        return this.convertToListEmployee(this.edao.getAll());
     }
     
 }
