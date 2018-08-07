@@ -6,6 +6,7 @@
 package daos;
 
 import entities.Country;
+import java.util.List;
 import org.hibernate.SessionFactory;
 
 /**
@@ -27,4 +28,16 @@ public class CountryDAO {
     public Country getById(String countryId){
         return (Country) this.fdao.getById("FROM Country WHERE countryId='"+countryId+"'");
     }
+    
+       /**
+ * Fungsi search
+ * @param category - kolum apa yang kita cari
+ * @param data = apa yang kita cari
+ * @return List - List object from Jobs table
+ */
+
+public List<Object> search(String category, String data)
+{
+    return this.fdao.get("FROM Country WHERE REGEXP_LIKE("+category+",'%"+data+"%','i')"); // query tersebut merupakan HQL //
+}
 }
