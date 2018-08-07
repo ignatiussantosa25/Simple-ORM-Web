@@ -50,6 +50,14 @@ public class Country implements Serializable {
     public Country() {
     }
 
+    public Country(String countryId, String countryName, List<Location> locationList, Region regionId) {
+        this.countryId = countryId;
+        this.countryName = countryName;
+        this.locationList = locationList;
+        this.regionId = regionId;
+    }
+
+    
     public Country(String countryId) {
         this.countryId = countryId;
     }
