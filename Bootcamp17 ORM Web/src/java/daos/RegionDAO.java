@@ -5,10 +5,22 @@
  */
 package daos;
 
+import entities.Region;
+import org.hibernate.SessionFactory;
+import tools.HibernateUtil;
+
 /**
  *
  * @author Ignatius
  */
 public class RegionDAO {
-    
+    private final FunctionDAO fdao;
+
+    public RegionDAO(SessionFactory factory) {
+        this.fdao = new FunctionDAO(factory);
+    }
+
+    public boolean insertOrUpdate(Region region) {
+        return this.fdao.insertOrUpdate(region);
+    }
 }
