@@ -14,30 +14,41 @@ import org.hibernate.SessionFactory;
  * @author Ignatius
  */
 public class CountryDAO {
+
     private FunctionDAO fdao;
 
     public CountryDAO(SessionFactory factory) {
         this.fdao = new FunctionDAO(factory);
     }
-    
+
     /**
-     * Fungsi getById mengambil data berdasarkan id tertentu pada tabel countries
+     * Fungsi untuk menampilkan semua data dari Country
+     *
+     * @return List data
+     */
+    public List<Object> getAll() {
+        return this.fdao.get("FROM Country");
+    }
+
+    /**
+     * Fungsi getById mengambil data berdasarkan id tertentu pada tabel
+     * countries
+     *
      * @param countryId id dari tabel countries
      * @return Country sebagai object dari class country
      */
-    public Country getById(String countryId){
-        return (Country) this.fdao.getById("FROM Country WHERE countryId='"+countryId+"'");
+    public Country getById(String countryId) {
+        return (Country) this.fdao.getById("FROM Country WHERE countryId='" + countryId + "'");
     }
-    
-       /**
- * Fungsi search
- * @param category - kolum apa yang kita cari
- * @param data = apa yang kita cari
- * @return List - List object from Jobs table
- */
 
-public List<Object> search(String category, String data)
-{
-    return this.fdao.get("FROM Country WHERE REGEXP_LIKE("+category+",'%"+data+"%','i')"); // query tersebut merupakan HQL //
-}
+    /**
+     * Fungsi search
+     *
+     * @param category - kolum apa yang kita cari
+     * @param data = apa yang kita cari
+     * @return List - List object from Jobs table
+     */
+    public List<Object> search(String category, String data) {
+        return this.fdao.get("FROM Country WHERE REGEXP_LIKE(" + category + ",'%" + data + "%','i')"); // query tersebut merupakan HQL //
+    }
 }

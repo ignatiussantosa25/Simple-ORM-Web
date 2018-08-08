@@ -25,11 +25,8 @@ public class EmployeeDAO {
      * @param employee
      * @return boolean true/false
      */   
-    public boolean insert(Employee employee) {
-        return this.fdao.insert(employee);
-    }
-    public boolean update(Employee employee) {
-        return this.fdao.update(employee);
+    public boolean insertOrUpdate(Employee employee) {
+        return this.fdao.insertOrUpdate(employee);
     }
     
      /**

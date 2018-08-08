@@ -56,6 +56,13 @@ public class CountryController {
        return this.convertToListCountry(this.countryDAO.search(category, data));
     }
     
-    
+        /**
+     * Fungsi untuk menampilkan semua data pada Country
+     *
+     * @return hasilnya yaitu data yang didapatkan berupa List
+     */
+    public List<Country> getAll() {
+        return this.convertToListCountry(this.countryDAO.getAll());
+    }
     
 }

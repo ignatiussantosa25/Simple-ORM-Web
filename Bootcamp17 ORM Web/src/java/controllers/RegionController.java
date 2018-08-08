@@ -48,5 +48,8 @@ public class RegionController {
     public List<Region> search(String category, String data) {
         return this.convertToListRegion(this.rdao.search(category, data));
     }
+                public List<Region> getAll() {
+        return this.convertToListRegion(this.rdao.getAll());
+    }
 
 }
