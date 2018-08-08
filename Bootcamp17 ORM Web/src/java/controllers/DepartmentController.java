@@ -37,6 +37,17 @@ public class DepartmentController {
     }
     
     /**
+     * /**
+     * Fungsi yang digunakan untuk mencari data Department
+     * @param category 
+     * @param data
+     * @return List
+     */
+    public List<Department> find(String category, String data){
+        return this.listDepartment(this.departmentDAO.search(category, data));
+    }
+    
+    /**
      * function select all data
      * @return list objct from object department
      */

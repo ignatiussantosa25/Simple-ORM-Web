@@ -42,17 +42,15 @@ public class EmployeeDAO {
     }
     
     
-    /**
-     * Fungsi search
-     * @param category
+     /**
+     * Fungsi yang digunakan untuk mencari data Employee
+     * @param category - what column we will find
      * @param data - what we will find
-     * @return List - List Object from Employee table
+     * @return List
      */
-    /*
     public List<Object> search(String category, String data){
-        return this.fdao.get("FROM Employee WHERE " + "REGEXP_LIKE("+category+",'%"+data+"%',?,'i')");
+        return  this.fdao.get("FROM Employee WHERE " +category+ " LIKE '%" +data+ "%'");
     }
-    */
     
     /**
      * Fungsi getById

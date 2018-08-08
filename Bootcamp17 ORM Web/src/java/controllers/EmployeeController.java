@@ -95,4 +95,14 @@ public class EmployeeController {
         return this.convertToListEmployee(this.edao.getAll());
     }
     
+    /**
+     * Fungsi yang digunakan untuk mencari data Employee
+     * @param category
+     * @param data
+     * @return List
+     */
+    public List<Employee> find(String category, String data){
+        return this.convertToListEmployee(this.edao.search(category, data));
+    }
+    
 }

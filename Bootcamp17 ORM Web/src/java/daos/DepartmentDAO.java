@@ -27,4 +27,13 @@ public class DepartmentDAO {
         return this.fdao.get("from Department");
     }
     
+    /**
+     * Fungsi yang digunakan untuk mencari data Department
+     * @param category - what column we will find
+     * @param data - what we will find
+     * @return List
+     */
+    public List<Object> search(String category, String data){
+        return  this.fdao.get("FROM Department WHERE " +category+ " LIKE '%" +data+ "%'");
+    }
 }
