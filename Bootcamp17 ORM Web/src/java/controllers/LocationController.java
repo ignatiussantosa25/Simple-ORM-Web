@@ -64,4 +64,13 @@ public class LocationController {
     public List<Location> getAll(){
         return this.convertToListLocation(this.ldao.getAll());
     }
+     /**
+     * Fungsi find by ID dari data location
+     * @param locationId String
+     * @return getLocationById
+     */
+    public Location findByID(String locationId){
+        Location location = new Location();
+        return this.ldao.getLocationById(locationId);
+    }
 }
