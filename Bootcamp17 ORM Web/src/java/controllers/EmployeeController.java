@@ -89,7 +89,7 @@ public class EmployeeController {
     
     /**
      * function get all data / select all
-     * @return list object data employee
+     * @return list object data employees
      */
     public List<Employee> getAll() {
         return this.convertToListEmployee(this.edao.getAll());
