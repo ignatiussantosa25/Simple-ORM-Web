@@ -28,5 +28,13 @@ public class LocationDAO {
         return this.fdao.get("FROM Location WHERE " + category + " LIKE '%" + data + "%'");
 
     }
+    
+    /**
+     * Fungsi untuk menampilkan semua data pada table Location 
+     * @return memanggil fungsi get dari FunctionDAO
+     */
+    public List<Object> getAll(){
+        return this.fdao.get("FROM Location");
+    } 
 
 }
