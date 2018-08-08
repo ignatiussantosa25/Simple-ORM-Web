@@ -21,7 +21,7 @@ public class CountryDAO {
     }
     
     /**
-     * Fungsi getById mengambil data berdasarkan id tertentu pada tabel countries
+     * Fungsi getById mengambil data berdasarkan countryId tertentu pada tabel countries
      * @param countryId id dari tabel countries
      * @return Country sebagai object dari class country
      */
