@@ -56,4 +56,12 @@ public class LocationController {
     public List<Location> search(String category, String data) {
         return this.convertToListLocation(this.ldao.search(category, data));
     }
+    
+    /**
+     * Fungsi untuk menampilkan semua data pada table Location
+     * @return memanggil fungsi getAll pada LocationDAO
+     */
+    public List<Location> getAll(){
+        return this.convertToListLocation(this.ldao.getAll());
+    }
 }
