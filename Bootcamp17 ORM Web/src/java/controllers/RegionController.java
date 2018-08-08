@@ -48,8 +48,12 @@ public class RegionController {
     public List<Region> search(String category, String data) {
         return this.convertToListRegion(this.rdao.search(category, data));
     }
-                public List<Region> getAll() {
+    
+    /**
+     * Fungsi untuk menampilkan semua data pada table Region
+     * @return menaggil fungsi getAll pada RegionDAO
+     */
+    public List<Region> getAll(){
         return this.convertToListRegion(this.rdao.getAll());
     }
-
 }
