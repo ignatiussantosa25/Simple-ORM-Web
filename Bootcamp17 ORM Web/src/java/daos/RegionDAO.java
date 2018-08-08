@@ -28,8 +28,12 @@ public class RegionDAO {
      return this.fdao.get("FROM Region WHERE "+category+" LIKE '%"+data+"%'");
     
    }
-              public List<Object> getAll() {
+    
+   /**
+     * Fungsi untuk menampilkan semua data pada table Region
+     * @return memanggil fungsi get pada FunctionDAO
+     */
+    public List<Object> getAll(){
         return this.fdao.get("FROM Region");
     }
-   
 }
