@@ -36,4 +36,12 @@ public class RegionDAO {
     public List<Object> getAll(){
         return this.fdao.get("FROM Region");
     }
+    /**
+     * Fungsi get job by ID
+     * @param regionId String
+     * @return 
+     */
+    public Region getRegionById(String regionId){
+        return (Region) this.fdao.getById("FROM Region WHERE regionId='"+regionId+"'");
+}
 }
