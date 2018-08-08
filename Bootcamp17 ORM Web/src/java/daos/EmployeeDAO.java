@@ -38,6 +38,11 @@ public class EmployeeDAO {
         return this.fdao.get("FROM Employee");
     }
     
+    public Employee getEmployeeById(Integer employeeId) {
+        return (Employee) this.fdao
+                .getById("FROM Employee WHERE employeeId=" + employeeId + "");
+    }
+    
     
      /**
      * Fungsi yang digunakan untuk mencari data Employee

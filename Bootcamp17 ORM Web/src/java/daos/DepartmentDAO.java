@@ -5,6 +5,7 @@
  */
 package daos;
 
+import entities.Department;
 import java.util.List;
 
 /**
@@ -35,5 +36,9 @@ public class DepartmentDAO {
      */
     public List<Object> search(String category, String data){
         return  this.fdao.get("FROM Department WHERE " +category+ " LIKE '%" +data+ "%'");
+    }
+    public Department getDepartmentById(Integer departmentId) {
+        return (Department) this.fdao
+                .getById("FROM Department WHERE departmentId='" + departmentId + "'");
     }
 }

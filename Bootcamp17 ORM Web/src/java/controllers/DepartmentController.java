@@ -54,4 +54,7 @@ public class DepartmentController {
     public List<Department> getAll() {
         return this.listDepartment(this.departmentDAO.getAll());
     }
+    public Department getById(Integer departmentId) {
+        return departmentDAO.getDepartmentById(departmentId);
+     }
 }

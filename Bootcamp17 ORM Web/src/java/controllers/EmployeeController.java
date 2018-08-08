@@ -45,7 +45,7 @@ public class EmployeeController {
     
     public boolean saveOrEdit(int employeeId, String firstName, String lastName, String email, String phoneNumber, Date hireDate, int salary, int commissionPct, Department departmentId, List<Employee> employeeList, Employee managerId, Job jobId){
         Employee employee = new Employee(employeeId, firstName, lastName, email, phoneNumber, hireDate, BigDecimal.ZERO, BigDecimal.ONE, departmentId, employeeList, managerId, jobId);
-        return this.edao.insert(employee);
+        return this.edao.insertOrUpdate(employee);
     }
     
    
@@ -94,6 +94,10 @@ public class EmployeeController {
     public List<Employee> getAll() {
         return this.convertToListEmployee(this.edao.getAll());
     }
+    
+    public Employee getById(Integer employeeId) {
+        return this.edao.getEmployeeById(employeeId);
+     }
     
     /**
      * Fungsi yang digunakan untuk mencari data Employee
