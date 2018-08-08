@@ -36,5 +36,13 @@ public class LocationDAO {
     public List<Object> getAll(){
         return this.fdao.get("FROM Location");
     } 
+    /**
+     * Fungsi DAO untuk mengambil data dari tabel Location berdasarkan ID
+     * @param locationId String
+     * @return Location
+     */
+    public Location getLocationById (String locationId){
+        return (Location) this.fdao.getById("FROM Location WHERE locationId='"+locationId+"'");
+    }
 
 }
