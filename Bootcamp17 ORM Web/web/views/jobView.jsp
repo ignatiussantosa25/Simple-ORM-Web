@@ -37,6 +37,7 @@
                     <td><%= job.getJobTitle() %></td>
                     <td><%= job.getMinSalary() %></td>
                     <td><%= job.getMaxSalary() %></td>
+                    <td><a href="../newServlet?id=<%= job.getJobId()%>">edit</a></td>
                 </tr>
                 <% i++; }%>
             </tbody>

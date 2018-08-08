@@ -47,7 +47,7 @@ Contributor(s):
     <property name="hibernate.default_schema">hr</property>
     <property name="hibernate.connection.username">system</property>
     <!--please set your own password-->
-    <property name="hibernate.connection.password">???</property>
+    <property name="hibernate.connection.password">admin</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <property name="current_session_context_class">thread</property>

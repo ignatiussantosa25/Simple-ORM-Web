@@ -6,24 +6,19 @@
 package servlets;
 
 import controllers.JobController;
-import entities.Job;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import tools.HibernateUtil;
 
 /**
  *
  * @author Ignatius
  */
-@WebServlet(name = "JobViewServlet", urlPatterns = {"/jobViewServlet"})
-public class JobViewServlet extends HttpServlet {
+public class EditJobServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,21 +32,17 @@ public class JobViewServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        RequestDispatcher dispatcher = null;
-        JobController jc = 
-                new JobController(HibernateUtil.getSessionFactory());
+        String id = request.getParameter("txtId");
+        String tit = request.getParameter("txtJobTitle");
+        String min = request.getParameter("txtMinSalary");
+        String max = request.getParameter("txtMaxSalary");
         try (PrintWriter out = response.getWriter()) {
-            session.setAttribute("message", jc.getAll());
-            dispatcher = request.getRequestDispatcher("views/cobaView.jsp");
-            dispatcher.forward(request, response);
-            
-//            out.println("\n" +
-//"        <font color=\"red\">ini adalah servlets yang berjalan</font>");
-//            RequestDispatcher dispatcher = 
-//                    request.getRequestDispatcher("views/jobView.jsp");
-////            dispatcher.forward(request, response);
-//            dispatcher.include(request, response);
+            JobController jc = new JobController(HibernateUtil.getSessionFactory());
+            if(jc.saveOrEdit(id, tit, min, Integer.parseInt(max))){
+                out.println("Okedeh cuy");
+            }else{
+                out.println("salah cuy");
+            }
         }
     }
 
