@@ -56,4 +56,14 @@ public class RegionController {
     public List<Region> getAll(){
         return this.convertToListRegion(this.rdao.getAll());
     }
+     /**
+     * Fungsi untuk mengambil data berdasarkan ID 
+     * @param regionId String
+     * @return getRegionById
+     */
+    
+    public Region findByID(String regionId){
+        Region region = new Region();
+        return this.rdao.getRegionById(regionId);
+    }
 }
