@@ -33,11 +33,12 @@ public class EmployeeDAO {
     }
     
      /**
-     * function GEt All
-     * @return list object from employee
+     * fungsi untuk mendapatkan semua data / getAll
+     * @return List data employee
      */
-    public List<Object> getAll() {
-        return this.fdao.get("from Employee");
+    
+    public List<Object>getAll(){
+        return this.fdao.get("FROM Employee");
     }
     
     
