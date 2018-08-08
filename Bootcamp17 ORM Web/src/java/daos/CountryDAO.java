@@ -21,6 +21,15 @@ public class CountryDAO {
         this.fdao = new FunctionDAO(factory);
     }
 
+        /**
+     * Fungsi untuk menambah dan mengedit data
+     * @param country - instansiasi dari Object
+     * @return memanggil fungsi insertOrUpdate pada fungsi fdao
+     */
+    public boolean insertOrUpdate(Country country){
+        return this.fdao.insertOrUpdate(country);
+    }
+    
     /**
      * Fungsi untuk menampilkan semua data dari Country
      *

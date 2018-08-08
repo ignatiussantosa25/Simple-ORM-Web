@@ -23,6 +23,17 @@ public class CountryController {
     }
     
     /**
+     * Fungsi untuk menambah dan mengedit data dengan parameter countryId, countryName
+     * @param countryId - String
+     * @param countryName - String
+     * @return boolean true/false
+     */
+    public boolean saveOrEdit(String countryId, String countryName){
+        Country country = new Country(countryId, countryName);
+        return this.countryDAO.insertOrUpdate(country);
+    }
+    
+    /**
      * fungsi menampilakan data berdasarkan id
      * @param countryId id yg dipilih
      * @return menampilkandata sesuai parameter
