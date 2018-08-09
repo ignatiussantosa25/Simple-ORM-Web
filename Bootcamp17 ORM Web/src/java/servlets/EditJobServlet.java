@@ -8,19 +8,19 @@ package servlets;
 import controllers.JobController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import tools.HibernateUtil;
 
 /**
  *
- * @author Simbok_pc
+ * @author MUHAMMAD BIN ZANDRA
  */
-public class NewServlet extends HttpServlet {
+@WebServlet(name = "EditJobServlet", urlPatterns = {"/editJobServlet"})
+public class EditJobServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +35,18 @@ public class NewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String id = request.getParameter("id");
-        HttpSession session = request.getSession();
-        RequestDispatcher requestDispatcher = null;
+        String aidi = request.getParameter("txtId");
+        String title = request.getParameter("txtTitle");
+        String min = request.getParameter("txtMin");
+        String max = request.getParameter("txtMax");
         
         try (PrintWriter out = response.getWriter()) {
-            session.setAttribute("message", id);
-            out.print("<h1>"+id+"</h1>");
-            requestDispatcher = request.getRequestDispatcher("views/coba1View.jsp");
-            
-            requestDispatcher.forward(request, response);
-            
+            JobController jc = new JobController(HibernateUtil.getSessionFactory());
+            if (jc.saveOrEdit(aidi, title, min, Integer.parseInt(max))) {
+                out.println("success");
+            }else{
+                out.print("failed"); 
+            }
         }
     }
 

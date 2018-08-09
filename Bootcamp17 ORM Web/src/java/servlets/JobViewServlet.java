@@ -9,11 +9,13 @@ import controllers.JobController;
 import entities.Job;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import tools.HibernateUtil;
 
 /**
@@ -35,15 +37,32 @@ public class JobViewServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        HttpSession session = request.getSession();
+        RequestDispatcher requestDispatcher = null;
+        JobController jobController = new JobController(HibernateUtil.getSessionFactory());
         try (PrintWriter out = response.getWriter()) {
-            JobController jc = new JobController(HibernateUtil.getSessionFactory());
-            out.println("<h1>Data Jobs with Servlet</h1>");
-            int i = 1;
-            for (Job job : jc.getAll()) {
-                out.println(i+". "+job.getJobId() + " - "+job.getJobTitle()+", has salaries between USD "+job.getMinSalary()+ " and "+job.getMaxSalary());
-                out.println("<hr>");
-                i++;
-            }
+            session.setAttribute("message", jobController.getAll());
+            requestDispatcher = request.getRequestDispatcher("views/cobaView.jsp");
+            
+            requestDispatcher.forward(request, response);
+//            JobController jc = new JobController(HibernateUtil.getSessionFactory());
+//            out.println("<h1>Data Jobs with Servlet</h1>");
+//            int i = 1;
+//            for (Job job : jc.getAll()) {
+//                out.println(i+". "+job.getJobId() + " - "+job.getJobTitle()+", has salaries between USD "+job.getMinSalary()+ " and "+job.getMaxSalary());
+//                out.println("<hr>");
+//                i++;
+//            }
+
+
+//            out.print("test jalan");
+//
+//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/jobView.jsp");
+//
+////            requestDispatcher.forward(request, response);
+//            requestDispatcher.include(request, response);
+
         }
     }
 

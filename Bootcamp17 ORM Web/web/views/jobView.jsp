@@ -15,7 +15,7 @@
         <title>Latihan dan Coba Web</title>
     </head>
     <body>
-        <h1>Data Job in table</h1>
+        
         <% JobController jc = new JobController(HibernateUtil.getSessionFactory()); %>
         <table border="1">
             <thead>
@@ -25,6 +25,7 @@
                     <th>Job Title</th>
                     <th>Min Salary</th>
                     <th>Max Salary</th>
+                    <th>Edit</th>  
                 </tr>
             </thead>
 
@@ -37,6 +38,7 @@
                     <td><%= job.getJobTitle() %></td>
                     <td><%= job.getMinSalary() %></td>
                     <td><%= job.getMaxSalary() %></td>
+                    <td><a href="../newServlet?id=<%= job.getJobId()%>" >Edit</a></td>
                 </tr>
                 <% i++; }%>
             </tbody>
