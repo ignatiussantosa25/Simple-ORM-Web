@@ -4,6 +4,8 @@
     Author     : Simbok_pc
 --%>
 
+<%@page import="entities.Region"%>
+<%@page import="controllers.RegionController"%>
 <%@page import="entities.Country"%>
 <%@page import="tools.HibernateUtil"%>
 <%@page import="controllers.CountryController"%>
@@ -17,6 +19,7 @@
     <body>
         <%
              CountryController cc = new CountryController(HibernateUtil.getSessionFactory());
+             RegionController rc = new RegionController(HibernateUtil.getSessionFactory());
         %>
         <form>
             <h1>Country</h1>
@@ -49,6 +52,11 @@
                         }
                     %>
                 </tbody>
+                <select name="cmbRegion">
+                    <% for (Region region : rc.getAll()) {%>
+                        <option><%= region.getRegionName() %></option>
+                    <%}%>                    
+                </select>
             </table>
         </form>
         
