@@ -46,6 +46,7 @@
                         <td><%=i%></td>
                         <td><%out.print(country.getCountryId());%></td>
                         <td><%out.print(country.getCountryName());%></td>
+                        <td><a href="../editCountry?id=<%= country.getCountryId() %>">Edit</a></td>
                     </tr>
                     <%
                         i++;

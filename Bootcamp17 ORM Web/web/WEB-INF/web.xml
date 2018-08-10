@@ -12,6 +12,10 @@
         <servlet-name>DetailRegion</servlet-name>
         <servlet-class>servlets.DetailRegion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditCountry</servlet-name>
+        <servlet-class>servlets.EditCountry</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/newServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>DetailRegion</servlet-name>
         <url-pattern>/detailRegion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCountry</servlet-name>
+        <url-pattern>/editCountry</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
