@@ -3,6 +3,10 @@
     Created on : Aug 7, 2018, 10:05:32 PM
     Author     : Dayinta Warih Wulandari
 --%>
+<%@page import="entities.Department"%>
+<%@page import="entities.Location"%>
+<%@page import="entities.Country"%>
+<%@page import="java.util.List"%>
 <%@page import="entities.Region"%>
 <%@page import="tools.HibernateUtil"%>
 <%@page import="controllers.RegionController"%>
@@ -35,6 +39,7 @@
             </tr>
         </thead>
         <tbody>
+            
             <%
                 int i = 1;
                 for (Region region : rc.getAll()) {
@@ -43,6 +48,7 @@
                 <td><%= i%></td>
                 <td><%= region.getRegionId()%></td>
                 <td><%= region.getRegionName()%></td>
+                <td><a href="../detailRegionServlet?regionId=<%=region.getRegionId()%>">Lihat detail</a></td>
             </tr>
             <%
                     i++;

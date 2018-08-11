@@ -6,6 +6,7 @@
 package controllers;
 
 import daos.LocationDAO;
+import entities.Country;
 import entities.Location;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class LocationController {
      * @return true/false
      */
     public boolean saveOrEdit(String locationId,String streetAddress,String postalCode,String city,String stateProvince,String countryId){
-        Location location = new Location(Short.parseShort(locationId), streetAddress, postalCode, city, stateProvince, null);
+        Location location = new Location(Short.parseShort(locationId), streetAddress, postalCode, city, stateProvince, new Country(countryId, ""));
         return this.ldao.insertOrUpdate(location);
     }
     
