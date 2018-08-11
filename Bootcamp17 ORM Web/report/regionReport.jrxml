@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="453db879-c664-4dd5-b186-d2e509c746c9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     EMPLOYEES."FIRST_NAME" AS EMPLOYEES_FIRST_NAME,
+     EMPLOYEES."LAST_NAME" AS EMPLOYEES_LAST_NAME,
+     COUNTRIES."COUNTRY_NAME" AS COUNTRIES_COUNTRY_NAME,
+     LOCATIONS."CITY" AS LOCATIONS_CITY,
+     DEPARTMENTS."DEPARTMENT_NAME" AS DEPARTMENTS_DEPARTMENT_NAME,
+     DEPARTMENTS."DEPARTMENT_ID" AS DEPARTMENTS_DEPARTMENT_ID
+FROM
+     "HR"."COUNTRIES" COUNTRIES INNER JOIN "HR"."LOCATIONS" LOCATIONS ON COUNTRIES."COUNTRY_ID" = LOCATIONS."COUNTRY_ID"
+     INNER JOIN "HR"."DEPARTMENTS" DEPARTMENTS ON LOCATIONS."LOCATION_ID" = DEPARTMENTS."LOCATION_ID"
+     INNER JOIN "HR"."EMPLOYEES" EMPLOYEES ON DEPARTMENTS."MANAGER_ID" = EMPLOYEES."EMPLOYEE_ID"
+     AND DEPARTMENTS."DEPARTMENT_ID" = EMPLOYEES."DEPARTMENT_ID"]]>
+	</queryString>
+	<field name="EMPLOYEES_FIRST_NAME" class="java.lang.String"/>
+	<field name="EMPLOYEES_LAST_NAME" class="java.lang.String"/>
+	<field name="COUNTRIES_COUNTRY_NAME" class="java.lang.String"/>
+	<field name="LOCATIONS_CITY" class="java.lang.String"/>
+	<field name="DEPARTMENTS_DEPARTMENT_NAME" class="java.lang.String"/>
+	<field name="DEPARTMENTS_DEPARTMENT_ID" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="163" y="21" width="213" height="28" uuid="2f5fefd9-dfcb-4d43-8c25-bf6ae643c5e8"/>
+				<textElement textAlignment="Center">
+					<font fontName="OCR-B 10 BT" size="26" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[REGION REPORT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="67" width="555" height="1" uuid="93d9bf9e-7990-4840-86f3-5bf1d6d1c076"/>
+			</line>
+			<image>
+				<reportElement x="452" y="7" width="48" height="61" uuid="b0c6b546-3c0f-45b0-b348-2d6734bf9a97"/>
+				<imageExpression><![CDATA["C:\\Users\\MUHAMMAD BIN ZANDRA\\Pictures\\unmul-logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d0ada762-aba3-4824-9ecd-6375e672463c"/>
+				<text><![CDATA[Department ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="1" width="100" height="20" uuid="b553844a-52e2-46fe-9d81-bc61078dd81a"/>
+				<text><![CDATA[Department name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="1" width="100" height="20" uuid="e2ce01ac-b268-40de-99ed-9bfa4b869de4"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="1" width="100" height="20" uuid="51825775-92b7-411b-8dec-5a8d6ded9756"/>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="1" width="100" height="20" uuid="1c0b51b0-bdc7-4763-b166-04e2e39eb624"/>
+				<text><![CDATA[Country]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="3bc6e35e-32fd-42b8-b75d-bba06cbf918e"/>
+				<textFieldExpression><![CDATA[$F{DEPARTMENTS_DEPARTMENT_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="8a09147a-51ad-4d04-8bb8-0f6fec966a3a"/>
+				<textFieldExpression><![CDATA[$F{DEPARTMENTS_DEPARTMENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="254289e1-5d96-410b-ab41-3df6ab4987ae"/>
+				<textFieldExpression><![CDATA[$F{EMPLOYEES_FIRST_NAME}+" "+$F{EMPLOYEES_LAST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="31e21b63-e03e-42da-85c5-3eb98e11c3db"/>
+				<textFieldExpression><![CDATA[$F{LOCATIONS_CITY}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="d93b78cd-50ae-45da-85ca-4811f5f26edd"/>
+				<textFieldExpression><![CDATA[$F{COUNTRIES_COUNTRY_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
