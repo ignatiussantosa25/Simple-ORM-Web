@@ -7,6 +7,7 @@ package daos;
 
 import entities.Department;
 import java.util.List;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -16,8 +17,8 @@ public class DepartmentDAO {
     
     private FunctionDAO fdao;
 
-    public DepartmentDAO(FunctionDAO functionDAO) {
-        this.fdao = functionDAO;
+    public DepartmentDAO(SessionFactory factory) {
+        this.fdao = new FunctionDAO(factory);
     }
     
     /**
