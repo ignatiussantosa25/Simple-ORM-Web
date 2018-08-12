@@ -5,23 +5,24 @@
  */
 package servlets;
 
-import controllers.DepartmentController;
-import controllers.EmployeeController;
+import controllers.RegionController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import tools.HibernateUtil;
 
 /**
  *
- * @author Gusma
+ * @author misbah alkhafadh
  */
-@WebServlet(name = "SaveEmployeeServlet", urlPatterns = {"/saveEmployeeServlet"})
-public class SaveEmployeeServlet extends HttpServlet {
+@WebServlet(name = "EditRegionServlet", urlPatterns = {"/editRegionServlet"})
+public class EditRegionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,30 +36,24 @@ public class SaveEmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       String id = request.getParameter("textId");
-        String first = request.getParameter("txtFirstName");
-        String last = request.getParameter("txtLastName");
-        String email = request.getParameter("txtEmail");
-        String np = request.getParameter("txtNumberPhone");
-        String hd = request.getParameter("txtHireDate");
-        String sl = request.getParameter("txtSalary");
-        String cpt = request.getParameter("txtCommPct");
-        String dp = request.getParameter("cmbDepartment");
-        String mg = request.getParameter("cmbManager");
-        String job = request.getParameter("cmbJob");
+        String id = request.getParameter("txtId");
+        String nm = request.getParameter("txtRegionName");
+//        HttpSession session = request.getSession();
+//        RegionController rc = new RegionController(HibernateUtil.getSessionFactory());
+//        RequestDispatcher dispatcher = null;
         try (PrintWriter out = response.getWriter()) {
-            EmployeeController ec = new EmployeeController(HibernateUtil.getSessionFactory());
-            DepartmentController dc = new DepartmentController(HibernateUtil.getSessionFactory());
-//            Employee employee = new Employee();
-//            Department department = new Department();
-            if (ec.saveOrEdit(Integer.parseInt(id), first, last, email, np, java.sql.Date.valueOf(hd),
-                    Integer.parseInt(sl),Integer.parseInt(cpt),dp,mg, job)) {
-                out.println("Sipp");
+            RegionController rc = new RegionController(HibernateUtil.getSessionFactory());
+            if (rc.saveOrEdit(id, nm)) {
+                out.println("Edit data berhasil");
             } else {
-                out.println("No !!");
+                out.println("Edit data gagal");
             }
-
+//            session.setAttribute("regionDetails", rc.findByID(id));
+//            dispatcher = request
+//                    .getRequestDispatcher("views/editRegionView.jsp");
+//            dispatcher.include(request, response);
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

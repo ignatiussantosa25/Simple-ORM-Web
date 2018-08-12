@@ -9,14 +9,68 @@ and open the template in the editor.
         <title>Latihan dan Coba Web</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+        <!--Style Bootstrap-->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        
+        <!--Style Custom-->
+        <!--<link rel="stylesheet" href="bootstrap/css/custom.css">-->
+        <link rel="stylesheet" href="bootstrap/css/dashboard.css">
+    </head>   
     <body>
-        <h1>Latihan dan Coba Web</h1>
-        <a href="views/jobView.jsp">Lihat Data Job</a>
-        <form action="jobViewServlet">
-            <input type="submit" value="Lihat Data Job" />
-        </form>
-        <p><a href="views/regionView.jsp">Goto Region</a><p>
-        <a href="views/location1View.jsp">Goto Location</a>
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Latihan Web Java</a>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">Cari</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                  <a class="nav-link active" href="index.html">
+                  <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="views/jobView.jsp"><span data-feather="file"></span>Job</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="views/regionView.jsp"><span data-feather="file"></span>Region</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+          
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary">Tambah Data</button>
+              </div>
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                  <span data-feather="calendar"></span>
+                  Kategori
+              </button>
+            </div>
+          </div>
+
+          <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+        </main>
+      </div>
+    </div>
+        
+<!--jQuery lokal -->
+    <script src="../bootstrap/js/jquery/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap/js/bootstrap.min.js"></script>
+
+<!--Custom JS--> 
+    <script src="../bootstrap/custom.js"></script>
     </body>
 </html>

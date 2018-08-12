@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import tools.HibernateUtil;
  *
  * @author Simbok_pc
  */
+@WebServlet(name = "NewServlet", urlPatterns={"/newServlet"})
 public class NewServlet extends HttpServlet {
 
     /**
@@ -33,19 +35,15 @@ public class NewServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        
         String id = request.getParameter("id");
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        RequestDispatcher requestDispatcher = null;
-        
+        RequestDispatcher dispatcher = null;
+        JobController jc = new JobController(HibernateUtil.getSessionFactory());
         try (PrintWriter out = response.getWriter()) {
-            session.setAttribute("message", id);
-            out.print("<h1>"+id+"</h1>");
-            requestDispatcher = request.getRequestDispatcher("views/coba1View.jsp");
-            
-            requestDispatcher.forward(request, response);
-            
+            out.println("<h1>"+id+"</h1>");
+            dispatcher = request.getRequestDispatcher("views/coba1View.jsp");
+            dispatcher.include(request, response);
         }
     }
 

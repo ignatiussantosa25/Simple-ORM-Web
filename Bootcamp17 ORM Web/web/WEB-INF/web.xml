@@ -4,73 +4,9 @@
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>servlets.NewServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>EditJobServlet</servlet-name>
-        <servlet-class>servlets.EditJobServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DetailRegionServlet</servlet-name>
-        <servlet-class>servlets.DetailRegionServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetIdLocationServlet</servlet-name>
-        <servlet-class>servlets.GetIdLocationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DetailLocationServlet</servlet-name>
-        <servlet-class>servlets.DetailLocationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditLocationServlet</servlet-name>
-        <servlet-class>servlets.EditLocationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SaveLocationServlet</servlet-name>
-        <servlet-class>servlets.SaveLocationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteLocationServlet</servlet-name>
-        <servlet-class>servlets.DeleteLocationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddLocationServlet</servlet-name>
-        <servlet-class>servlets.AddLocationServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/newServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditJobServlet</servlet-name>
-        <url-pattern>/editJobServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DetailRegionServlet</servlet-name>
-        <url-pattern>/detailRegionServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetIdLocationServlet</servlet-name>
-        <url-pattern>/getIdLocationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DetailLocationServlet</servlet-name>
-        <url-pattern>/detailLocationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditLocationServlet</servlet-name>
-        <url-pattern>/editLocationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SaveLocationServlet</servlet-name>
-        <url-pattern>/saveLocationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteLocationServlet</servlet-name>
-        <url-pattern>/deleteLocationServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddLocationServlet</servlet-name>
-        <url-pattern>/addLocationServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

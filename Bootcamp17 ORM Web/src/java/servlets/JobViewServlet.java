@@ -37,32 +37,17 @@ public class JobViewServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         HttpSession session = request.getSession();
-        RequestDispatcher requestDispatcher = null;
-        JobController jobController = new JobController(HibernateUtil.getSessionFactory());
+        RequestDispatcher dispatcher;
+        JobController jc = new JobController(HibernateUtil.getSessionFactory());
         try (PrintWriter out = response.getWriter()) {
-            session.setAttribute("message", jobController.getAll());
-            requestDispatcher = request.getRequestDispatcher("views/cobaView.jsp");
-            
-            requestDispatcher.forward(request, response);
-//            JobController jc = new JobController(HibernateUtil.getSessionFactory());
-//            out.println("<h1>Data Jobs with Servlet</h1>");
-//            int i = 1;
-//            for (Job job : jc.getAll()) {
-//                out.println(i+". "+job.getJobId() + " - "+job.getJobTitle()+", has salaries between USD "+job.getMinSalary()+ " and "+job.getMaxSalary());
-//                out.println("<hr>");
-//                i++;
+            session.setAttribute("message", jc.getAll());
+            dispatcher = request.getRequestDispatcher("views/cobaView.jsp");
+            dispatcher.forward(request, response);
+//            out.println("<h1>Ini adalah servlets yang berjalan</h1>");
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("views/jobView.jsp");
+//            dispatcher.forward(request, response);
 //            }
-
-
-//            out.print("test jalan");
-//
-//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/jobView.jsp");
-//
-////            requestDispatcher.forward(request, response);
-//            requestDispatcher.include(request, response);
-
         }
     }
 

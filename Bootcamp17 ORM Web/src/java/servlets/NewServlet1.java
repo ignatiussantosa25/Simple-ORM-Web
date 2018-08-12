@@ -5,11 +5,12 @@
  */
 package servlets;
 
-import controllers.CountryController;
+import controllers.JobController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,9 +19,10 @@ import tools.HibernateUtil;
 
 /**
  *
- * @author MUHAMMAD BIN ZANDRA
+ * @author AINAN-Gaul
  */
-public class GetIdLocationServlet extends HttpServlet {
+@WebServlet(name = "NewServlet1", urlPatterns = {"/newServlet1"})
+public class NewServlet1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +36,13 @@ public class GetIdLocationServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String id = request.getParameter("locationId");
-        
+        String id = request.getParameter("id");
         HttpSession session = request.getSession();
-        RequestDispatcher requestDispatcher = null;
-        CountryController cc = new CountryController(HibernateUtil.getSessionFactory());
+        RequestDispatcher dispatcher = null;
         try (PrintWriter out = response.getWriter()) {
-            session.setAttribute("sendLocationId", id);
-            session.setAttribute("countries", cc.getAll());
-            requestDispatcher = request.getRequestDispatcher("views/editLocationView.jsp");
-            
-            requestDispatcher.forward(request, response);
+            out.println("<h1>"+id+"</h1>");
+            dispatcher = request.getRequestDispatcher("views/coba1View.jsp");
+            dispatcher.include(request, response);
         }
     }
 

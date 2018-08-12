@@ -1,12 +1,11 @@
 <%-- 
-    Document   : detailView
-    Created on : Aug 9, 2018, 3:28:06 PM
-    Author     : MUHAMMAD BIN ZANDRA
+    Document   : detailRegionView
+    Created on : Aug 9, 2018, 2:13:32 PM
+    Author     : misbah alkhafadh
 --%>
 
-<%@page import="entities.Employee"%>
-<%@page import="entities.Location"%>
 <%@page import="entities.Department"%>
+<%@page import="entities.Location"%>
 <%@page import="entities.Country"%>
 <%@page import="java.util.List"%>
 <%@page import="entities.Region"%>
@@ -18,25 +17,25 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <% Region region = (Region) session.getAttribute("detail"); %>
-        <hr>
-        Region ID : <%= region.getRegionId()%>, Region Name : <%= region.getRegionName()%>
-        <hr>
-        </hr>
+        <% Region region = (Region) session.getAttribute("details");%>
+        <hr> Region ID: <%= region.getRegionId()%>, Region Name:
+        <%= region.getRegionName()%><hr>
         <% List<Country> dataCountry = region.getCountryList();
             for (Country country : dataCountry) {
-                out.print("Country : "+country.getCountryName() + "----" + country.getCountryId() + "<br>");
-                for (Location location : country.getLocationList()) {
-                    out.print("Location : "+location.getCity() + "<br>");
-                    for (Department department : location.getDepartmentList()) {
-                        out.print("Dept : "+department.getDepartmentName() + "---" + department.getDepartmentId() + "<br>");
-                        for (Employee employee : department.getEmployeeList()) {
-                                out.print("Employee ="+employee.getFirstName()+"--"+employee.getHireDate()+"--"+employee.getSalary()+"<br>");
+                out.println("Country : "+country.getCountryId() + " - " 
+                        + country.getCountryName()+"<br>"
+                );                
+                for (Location lokasi : country.getLocationList()) {
+                        out.println("Locations : "+lokasi.getCity()+"<br>");
+                        for (Department dept : lokasi.getDepartmentList()) {
+                                out.println("Department : "
+                                        +dept.getDepartmentName()+"<br>");
                             }
+                        out.println("<br>");
                     }
-                }
         %>
-
-        <% }%>
+        <br>
+        <%}
+        %>
     </body>
 </html>

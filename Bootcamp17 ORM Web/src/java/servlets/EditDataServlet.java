@@ -5,22 +5,22 @@
  */
 package servlets;
 
-import controllers.RegionController;
+import controllers.JobController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import tools.HibernateUtil;
 
 /**
  *
- * @author MUHAMMAD BIN ZANDRA
+ * @author misbah alkhafadh
  */
-public class DetailRegionServlet extends HttpServlet {
+@WebServlet(name = "EditDataServlet", urlPatterns = {"/editDataServlet"})
+public class EditDataServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,17 +34,17 @@ public class DetailRegionServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String id = request.getParameter("regionId");
-        
-        RegionController rc = new RegionController(HibernateUtil.getSessionFactory());
-        
-        HttpSession session = request.getSession();
-        RequestDispatcher dispatcher = null;
+        String id = request.getParameter("txtId");
+        String tit = request.getParameter("txtJobTitle");
+        String min = request.getParameter("txtMinSalary");
+        String max = request.getParameter("txtMaxSalary");
         try (PrintWriter out = response.getWriter()) {
-            session.setAttribute("detail", rc.findByID(id));
-            dispatcher = request.getRequestDispatcher("views/detailRegionView.jsp");
-            dispatcher.forward(request, response);
+            JobController jc = new JobController(HibernateUtil.getSessionFactory());
+            if(jc.saveOrEdit(id, tit, min, Integer.parseInt(max))){
+                out.println("Okedeh Cuy");
+            }else{
+                out.println("Salah Cuy");     
+            }
         }
     }
 

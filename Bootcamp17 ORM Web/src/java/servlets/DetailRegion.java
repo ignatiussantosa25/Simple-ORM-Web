@@ -5,21 +5,19 @@
  */
 package servlets;
 
-import controllers.RegionController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import tools.HibernateUtil;
 
 /**
  *
- * @author Ignatius
+ * @author misbah alkhafadh
  */
+@WebServlet(name = "DetailRegion", urlPatterns = {"/detailRegion"})
 public class DetailRegion extends HttpServlet {
 
     /**
@@ -34,17 +32,17 @@ public class DetailRegion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String id = request.getParameter("regionId");
-        RegionController rc = new RegionController(HibernateUtil
-                .getSessionFactory());
-        HttpSession session = request.getSession();
-        RequestDispatcher dis = null;
-        
         try (PrintWriter out = response.getWriter()) {
-            session.setAttribute("details", rc.findByID(id));
-            dis = request.getRequestDispatcher("views/detailRegion.jsp");
-            dis.forward(request, response);
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet DetailRegion</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet DetailRegion at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

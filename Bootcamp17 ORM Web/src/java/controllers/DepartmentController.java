@@ -9,7 +9,6 @@ import daos.DepartmentDAO;
 import entities.Department;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.SessionFactory;
 
 /**
  *
@@ -19,8 +18,8 @@ public class DepartmentController {
     
     private final DepartmentDAO departmentDAO;
 
-    public DepartmentController(SessionFactory factory) {
-        this.departmentDAO = new DepartmentDAO(factory);
+    public DepartmentController(DepartmentDAO departmentDAO) {
+        this.departmentDAO = departmentDAO;
     }
     
     /**
