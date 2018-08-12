@@ -78,11 +78,11 @@
                       <div class="modal-body">
                         <form>
                           <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Region Id:</label>
+                            <label for="recipient-id" class="col-form-label">Region Id:</label>
                             <input type="text" class="form-control" id="recipient-id">
                           </div>
                           <div class="form-group">
-                            <label for="message-text" class="col-form-label">Region Name:</label>
+                            <label for="recipient-name" class="col-form-label">Region Name:</label>
                             <input type="text" class="form-control" id="recipient-name">
                           </div>
                         </form>
@@ -153,18 +153,6 @@
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
 <!--Custom JS--> 
-<!--<script src="../bootstrap/js/modal.js"></script>-->
     <script src="../bootstrap/js/custom.js"></script>
-    <script>
-        $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('Tambah Data ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
-    </script>
     </body>
 </html>

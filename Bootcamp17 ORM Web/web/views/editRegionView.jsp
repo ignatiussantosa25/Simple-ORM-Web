@@ -64,7 +64,7 @@
           <form action="editRegionServlet" method="GET">
               <div class="form-group">
                 <div class="form-control">
-                    <input type="text" name="txtId" value="<%= region.getRegionId()%>" readonly="readonly">
+                    <input type="text" name="txtId" value="<%= region.getRegionId()%>" disabled="">
                 </div>
                 <div class="form-control">
                     <input type="text" name="txtRegionName" value="<%= region.getRegionName()%>">

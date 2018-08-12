@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-
+//Modal
 $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -14,3 +14,8 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   modal.find('.modal-title').text('Tambah Data ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
+
+//DataTable
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
