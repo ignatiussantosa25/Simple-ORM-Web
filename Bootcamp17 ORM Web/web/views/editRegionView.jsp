@@ -38,12 +38,12 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="../index.html">
                   <span data-feather="file"></span> Dashboard <span data-feather="file"></span>
                 </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="views/jobView.jsp"><span>Job<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="jobView.jsp"><span>Job<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="regionView.jsp">

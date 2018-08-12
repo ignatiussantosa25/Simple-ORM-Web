@@ -38,7 +38,7 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="../index.html">
                   <span data-feather="file"></span> Dashboard <span data-feather="file"></span>
                 </a>
               </li>
@@ -48,7 +48,7 @@
                     </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="views/RegionViews.jsp"><span data-feather="file"></span>Region</a>
+                  <a class="nav-link" href="regionView.jsp"><span data-feather="file"></span>Region</a>
               </li>
             </ul>
           </div>

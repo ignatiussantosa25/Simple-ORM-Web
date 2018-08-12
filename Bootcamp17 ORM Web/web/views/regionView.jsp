@@ -1,7 +1,7 @@
 <%-- 
-    Document   : CountryView
+    Document   : regionView
     Created on : Aug 7, 2018, 10:05:32 PM
-    Author     : Dayinta Warih Wulandari
+    Author     : Misbah Munirin Alkhafadh
 --%>
 <%@page import="entities.Region"%>
 <%@page import="tools.HibernateUtil"%>
@@ -15,8 +15,10 @@
         <!--Style Bootstrap-->
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         
+        <!--Data Table-->
+        <link rel="stylesheet" href="../bootstrap/css/dataTables.bootstrap4.min.css">
+        
         <!--Style Custom-->
-        <!--<link rel="stylesheet" href="../bootstrap/css/custom.css">-->
         <link rel="stylesheet" href="../bootstrap/css/dashboard.css">
     </head>
 
@@ -39,12 +41,12 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                  <a class="nav-link" href="../index.html">
                   <span data-feather="file"></span> Dashboard <span data-feather="file"></span>
                 </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="views/jobView.jsp"><span>Job<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="jobView.jsp"><span>Job<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="regionView.jsp">
@@ -112,7 +114,7 @@
 
           <h2>Data Region</h2>
           <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table id="example" class="table table-striped table-sm" style="width:100%">
               <thead>
                 <tr>
                   <th style="text-align: center">No</th>
@@ -150,7 +152,12 @@
 <!--jQuery lokal -->
     <script src="../bootstrap/js/popper.min.js"></script>
     <script src="../bootstrap/js/jquery-slim.min.js"></script>
+    <script src="../bootstrap/js/jquery-3.3.1.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    
+<!--Data Table Script-->
+    <script src="../bootstrap/js/jquery.dataTables.min.js"></script>
+    <script src="../bootstrap/js/dataTables.bootstrap4.min.js"></script>
 
 <!--Custom JS--> 
     <script src="../bootstrap/js/custom.js"></script>
