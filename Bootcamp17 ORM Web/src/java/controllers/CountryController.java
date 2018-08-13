@@ -6,7 +6,9 @@
 package controllers;
 
 import daos.CountryDAO;
+import daos.RegionDAO;
 import entities.Country;
+import entities.Region;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.SessionFactory;
@@ -17,9 +19,11 @@ import org.hibernate.SessionFactory;
  */
 public class CountryController {
     private CountryDAO countryDAO;
+    private RegionDAO regionDAO;
 
     public CountryController(SessionFactory factory) {
         this.countryDAO = new CountryDAO(factory);
+        this.regionDAO = new RegionDAO(factory);
     }
     
     /**
@@ -28,8 +32,9 @@ public class CountryController {
      * @param countryName - String
      * @return boolean true/false
      */
-    public boolean saveOrEdit(String countryId, String countryName){
-        Country country = new Country(countryId, countryName);
+    public boolean saveOrEdit(String countryId, String countryName,String regionId){
+        Region region = (Region) this.regionDAO.getRegionById(regionId);
+        Country country = new Country(countryId, countryName,region);
         return this.countryDAO.insertOrUpdate(country);
     }
     

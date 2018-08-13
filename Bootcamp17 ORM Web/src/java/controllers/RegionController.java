@@ -56,6 +56,9 @@ public class RegionController {
     public List<Region> getAll(){
         return this.convertToListRegion(this.rdao.getAll());
     }
+    public List<Region> getAllSort(String category,String sort){
+        return this.convertToListRegion(this.rdao.getAllSort(category, sort));
+    }
      /**
      * Fungsi untuk mengambil data berdasarkan ID 
      * @param regionId String

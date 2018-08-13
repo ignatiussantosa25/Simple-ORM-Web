@@ -36,6 +36,10 @@ public class RegionDAO {
     public List<Object> getAll(){
         return this.fdao.get("FROM Region");
     }
+    
+    public List<Object> getAllSort(String category, String sort){
+        return this.fdao.get("FROM Region ORDER BY "+category+" "+sort);
+    }
     /**
      * Fungsi get job by ID
      * @param regionId String
