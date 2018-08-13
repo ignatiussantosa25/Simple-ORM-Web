@@ -4,8 +4,12 @@
     Author     : budiarti
 --%>
 
+<%@page import="controllers.EmployeeController"%>
+<%@page import="entities.Location"%>
+<%@page import="controllers.LocationController"%>
 <%@page import="tools.HibernateUtil"%>
 <%@page import="entities.Department"%>
+<%@page import="entities.Employee"%>
 <%@page import="controllers.DepartmentController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,9 +21,11 @@
     <body>
         <%
             DepartmentController departmentController = new DepartmentController(HibernateUtil.getSessionFactory());
+            LocationController lc = new LocationController(HibernateUtil.getSessionFactory());
+            EmployeeController ec = new EmployeeController(HibernateUtil.getSessionFactory());
         %>
         <p>
-        <h1>Job</h1>
+        <h1>Department</h1>
         <select name="cmbCategory">
         </select>
         <input type="text" name="txtFind" value="" />
@@ -34,19 +40,30 @@
                 <th>Department Name</th>
                 <th>Manager Id</th>
                 <th>Location Id</th>
+                <th>Edit</th>
+
             </tr>
         </thead>
         <tbody>
             <%
+                    
                 int i = 1;
                 for (Department Dept : departmentController.getAll()) {
+                     
             %>
             <tr>
                 <td><%= i%></td>
                 <td><%= Dept.getDepartmentId()%></td>
                 <td><%= Dept.getDepartmentName()%></td>
-                <td><%out.print(Dept.getManagerId());%></td>
-                <td><%out.print(Dept.getLocationId());%></td>
+                <td>
+                    <%       
+
+                        if(Dept.getManagerId() !=null ){
+                        out.print(Dept.getManagerId().getEmployeeId());
+                    }                    %>
+                </td>
+                <td><% out.println( Dept.getLocationId().getLocationId());%></td>
+                <td><a href="../departmentEditServlet?id=<%= Dept.getDepartmentId() %>"> Edit </td>
             </tr>
             <%
                     i++;
@@ -54,43 +71,5 @@
             %>
         </tbody>
     </table>
-    <table border="0">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Department Id</td>
-                <td>
-                    <input type="text" name="txtIdDept" value="" size="10" />
-                </td>
-            </tr>
-            <tr>
-                <td>Department Name</td>
-                <td>
-                    <input type="text" name="txtNameDept" value="" size="15" />
-                </td>
-            </tr>
-            <tr>
-                <td>Manager Id</td>
-                <td>
-                    <input type="text" name="txtManId" value="" size="10" />
-                </td>
-            </tr>
-            <tr>
-                <td>Location Id</td>
-                <td>
-                    <input type="text" name="txtLocId" value="" size="10" />
-                </td>
-            </tr>
-        <input type="submit" value=
-        </tbody>
-    </table>
-    <p>"Save" name="btnSave" />
-        <input type="submit" value="Drop" name="btnDrop" />
-    </p>
-    </body>
+</body>
 </html>

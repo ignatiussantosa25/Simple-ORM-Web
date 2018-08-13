@@ -7,6 +7,7 @@ package daos;
 
 import entities.Department;
 import java.util.List;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -16,8 +17,8 @@ public class DepartmentDAO {
     
     private FunctionDAO fdao;
 
-    public DepartmentDAO(FunctionDAO functionDAO) {
-        this.fdao = functionDAO;
+    public DepartmentDAO(SessionFactory factory) {
+        this.fdao = new FunctionDAO(factory);
     }
     
     /**
@@ -41,4 +42,8 @@ public class DepartmentDAO {
         return (Department) this.fdao
                 .getById("FROM Department WHERE departmentId='" + departmentId + "'");
     }
+     public boolean insertOrUpdate(Department deparment) {
+        return this.fdao.insertOrUpdate(deparment);
+    }
+
 }

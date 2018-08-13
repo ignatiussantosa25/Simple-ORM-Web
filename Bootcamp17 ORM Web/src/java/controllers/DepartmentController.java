@@ -6,9 +6,12 @@
 package controllers;
 
 import daos.DepartmentDAO;
+import entities.Country;
 import entities.Department;
+import entities.Location;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.SessionFactory;
 
 /**
  *
@@ -17,9 +20,9 @@ import java.util.List;
 public class DepartmentController {
     
     private final DepartmentDAO departmentDAO;
-
-    public DepartmentController(DepartmentDAO departmentDAO) {
-        this.departmentDAO = departmentDAO;
+    private Country country; 
+    public DepartmentController(SessionFactory factory) {
+        this.departmentDAO = new DepartmentDAO(factory);
     }
     
     /**
@@ -57,4 +60,8 @@ public class DepartmentController {
     public Department getById(Integer departmentId) {
         return departmentDAO.getDepartmentById(departmentId);
      }
+     public boolean saveOrEdit(Short departmentId, String DepartmentName,String ManagerId, String locationId)  {
+        Department department = new Department(departmentId, DepartmentName, null, new Location(Short.parseShort(locationId), "", "", "", "", country));
+        return this.departmentDAO.insertOrUpdate(department);
+    }
 }
