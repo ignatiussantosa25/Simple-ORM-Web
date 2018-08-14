@@ -8,21 +8,19 @@ package servlets;
 import controllers.JobController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import tools.HibernateUtil;
 
 /**
  *
- * @author AINAN-Gaul
+ * @author Dayinta Warih Wulandari
  */
-@WebServlet(name = "NewServlet1", urlPatterns = {"/newServlet1"})
-public class NewServlet1 extends HttpServlet {
+@WebServlet(name = "ProsesEditJobServlet", urlPatterns = {"/prosesEditJobServlet"})
+public class ProsesEditJobServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +34,20 @@ public class NewServlet1 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
-        HttpSession session = request.getSession();
-        RequestDispatcher dispatcher = null;
-        JobController jc = new JobController(HibernateUtil.getSessionFactory());
+        String id = request.getParameter("txtId");
+        String title = request.getParameter("txtTitle");
+        String min = request.getParameter("txtMin");
+        String max = request.getParameter("txtMax");
         try (PrintWriter out = response.getWriter()) {
-            //out.println("<h1>"+id+"</h1>");
-            session.setAttribute("detail", jc.getById(id));
-            dispatcher = request.getRequestDispatcher("views/coba1View.jsp");
-            dispatcher.include(request, response);
+            JobController jc = new JobController(HibernateUtil.getSessionFactory());
+            if(jc.saveOrEdit(id, title, min, Integer.parseInt(max))){
+                out.println("YAAASS");
+            }else{
+                out.println("NAAAYYY");
+            }
         }
-    }
+        }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

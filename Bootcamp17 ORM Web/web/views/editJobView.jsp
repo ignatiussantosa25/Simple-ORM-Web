@@ -18,12 +18,12 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <% JobController jc = new JobController(HibernateUtil.getSessionFactory()); %>
-        <% String data = session.getAttribute("message").toString();
-            Job j = jc.getById(data);
+        <% Job j = (Job)session.getAttribute("detail");
         %>
 
-        <form method="GET" action="editJobServlet"> 
+        <form method="GET" action="prosesEditJobServlet"> 
             <table>
                 <tr>
                     <td>ID :</td>
@@ -42,14 +42,14 @@
                 <tr>
                     <td>Min</td>
                     <td>
-                        <input type="text" name="txtMin" value="<%=j.getMaxSalary()%>">
+                        <input type="text" name="txtMin" value="<%=j.getMinSalary()%>">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Max:</td>
                     <td>
-                        <input type="text" name="txtMax" value="<%=j.getMinSalary()%>">
+                        <input type="text" name="txtMax" value="<%=j.getMaxSalary()%>">
                     </td>
                 </tr>
 

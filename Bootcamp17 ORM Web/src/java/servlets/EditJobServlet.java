@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +18,9 @@ import tools.HibernateUtil;
 
 /**
  *
- * @author AINAN-Gaul
+ * @author Dayinta Warih Wulandari
  */
-@WebServlet(name = "NewServlet1", urlPatterns = {"/newServlet1"})
-public class NewServlet1 extends HttpServlet {
+public class EditJobServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,14 +34,14 @@ public class NewServlet1 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("id");
+        String id = request.getParameter("jobId");
+        JobController jc = new JobController(HibernateUtil.getSessionFactory());
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
-        JobController jc = new JobController(HibernateUtil.getSessionFactory());
         try (PrintWriter out = response.getWriter()) {
             //out.println("<h1>"+id+"</h1>");
             session.setAttribute("detail", jc.getById(id));
-            dispatcher = request.getRequestDispatcher("views/coba1View.jsp");
+            dispatcher = request.getRequestDispatcher("views/editJobView.jsp");
             dispatcher.include(request, response);
         }
     }

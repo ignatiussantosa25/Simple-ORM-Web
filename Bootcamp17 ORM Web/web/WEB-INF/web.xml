@@ -4,9 +4,17 @@
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>servlets.NewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditJobServlet</servlet-name>
+        <servlet-class>servlets.EditJobServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/newServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditJobServlet</servlet-name>
+        <url-pattern>/editJobServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
